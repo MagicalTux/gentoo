@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<layman>
+  <overlay
+      contact="magicaltux@ookoo.org"
+      name="magicaltux"
+      src="https://ookoo.org/svn/gentoo/ebuilds"
+      type="svn">
+    <link>
+        http://ookoo.org/
+    </link>
+    <description>
+        Stuff and stuff
+    </description>
+  </overlay>
+</layman>
