@@ -11,20 +11,13 @@ SRC_URI="http://beta.magicaltux.net/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64"
 IUSE="doc python"
 
 DEPEND="dev-libs/libusb
 	doc? ( app-doc/doxygen )
 	python? ( dev-lang/swig >=dev-lang/python-2.1.0 )"
 RDEPEND="dev-libs/libusb"
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	epatch "${FILESDIR}"/${P}-swig-assert.patch
-}
 
 src_compile() {
 	local myconf
