@@ -12,23 +12,15 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug doc python"
 
-DEPEND="dev-libs/libusb
+RDEPEND="dev-libs/libusb"
+DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	python? ( dev-lang/swig >=dev-lang/python-2.1.0 )"
-RDEPEND="dev-libs/libusb"
 
 src_compile() {
 	local myconf
 
-	myconf=""
-
-	if use doc; then
-		myconf="${myconf} --with-doxygen"
-	else
-		myconf="${myconf} --without-doxygen"
-	fi
-
-	myconf="${myconf} $(use_enable debug)"
+	myconf="$(use_with doc doxygen) $(use_enable debug)"
 
 	if use python; then
 		# libhid includes its own python detection m4 from
@@ -37,12 +29,11 @@ src_compile() {
 		# passing the right environnement variables, only if we have the python
 		# flag
 		PYTHON_LDFLAGS="$(python-config --ldflags)" \
-			econf \
-			--enable-swig ${myconf} || die "econf failed"
+			econf --enable-swig ${myconf}
 	else
 		# avoid libhid running swig if it finds it automatically as long as the
 		# "python" use flag is not set
-		econf --disable-swig ${myconf} || die "econf failed"
+		econf --disable-swig ${myconf}
 	fi
 
 	emake || die "emake failed"
