@@ -47,7 +47,7 @@ src_install() {
 
 	dodoc AUTHORS ChangeLog NEWS README README.licence TODO || die
 	if use doc; then
-		dohtml -r doc/www/html/*
+		dohtml -r doc/html/*
 	fi
 }
 
