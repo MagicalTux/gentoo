@@ -2,8 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit eutils
-
 DESCRIPTION="Provides a generic and flexible way to access and interact with
 USB HID devices"
 HOMEPAGE="http://libhid.alioth.debian.org/"
@@ -49,8 +47,7 @@ src_install() {
 
 	dodoc AUTHORS ChangeLog NEWS README README.licence TODO || die
 	if use doc; then
-		dohtml doc/www/index.html doc/www/html/*
+		dohtml -r doc/www/html/*
 	fi
-#	dohtml EXTENDING.html ctags.html
 }
 
