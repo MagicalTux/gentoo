@@ -4,7 +4,8 @@
 
 inherit python
 
-DESCRIPTION="Provides a generic and flexible way to access and interact with USB HID devices"
+DESCRIPTION="Provides a generic and flexible way to access and interact with
+USB HID devices"
 HOMEPAGE="http://libhid.alioth.debian.org/"
 SRC_URI="http://beta.magicaltux.net/${P}.tar.gz"
 
@@ -27,7 +28,19 @@ src_compile() {
 		myconf="$myconf --without-doxygen"
 	fi
 
-	econf $(use_enable python swig) ${myconf} || die "econf failed"
+	if use python; then
+		# libhid includes its own python detection m4 from
+		# http://autoconf-archive.cryp.to/ac_python_devel.html
+		# As it seems to detect python in the wrong place, we'll force it by
+		# passing the right environnement variables, only if we have the python
+		# flag
+		PYTHON_LDFLAGS="$(python-config --ldflags)" econf --enable-swig ${myconf} || die "econf failed"
+	else
+		# avoid libhid running swig if it finds it automatically as long as the
+		# "python" use flag is not set
+		econf --disable-swig ${myconf} || die "econf failed"
+	fi
+
 	emake || die "emake failed"
 }
 
