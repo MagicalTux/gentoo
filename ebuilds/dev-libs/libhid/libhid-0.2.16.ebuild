@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit python eutils
+inherit eutils
 
 DESCRIPTION="Provides a generic and flexible way to access and interact with
 USB HID devices"
