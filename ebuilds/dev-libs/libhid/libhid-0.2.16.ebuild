@@ -19,6 +19,13 @@ DEPEND="dev-libs/libusb
 	python? ( dev-lang/swig )"
 RDEPEND="dev-libs/libusb"
 
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+
+	epatch "${FILESDIR}/${P}-swig-assert.patch"
+}
+
 src_compile() {
 	local myconf
 

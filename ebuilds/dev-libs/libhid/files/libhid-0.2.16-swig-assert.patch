@@ -1,0 +1,11 @@
+diff -rU3 libhid-0.2.16/swig/hid.i libhid-0.2.16-patch/swig/hid.i
+--- libhid-0.2.16/swig/hid.i	2007-02-04 04:18:29.000000000 +0100
++++ libhid-0.2.16-patch/swig/hid.i	2008-08-08 18:49:42.000000000 +0200
+@@ -2,6 +2,7 @@
+ %{
+ #include <compiler.h>
+ #include <hid.h>
++#include <assert.h>
+ %}
+ 
+ %feature("autodoc","0");
