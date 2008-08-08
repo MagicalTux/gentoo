@@ -49,7 +49,7 @@ src_install() {
 
 	dodoc AUTHORS ChangeLog NEWS README README.licence TODO || die
 	if use doc; then
-		dohtml doc/www/*
+		dohtml doc/www/index.html doc/www/html/*
 	fi
 #	dohtml EXTENDING.html ctags.html
 }
