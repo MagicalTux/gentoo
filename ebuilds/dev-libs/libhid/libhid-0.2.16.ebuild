@@ -16,14 +16,14 @@ IUSE="doc python"
 
 DEPEND="dev-libs/libusb
 	doc? ( app-doc/doxygen )
-	python? ( dev-lang/swig )"
+	python? ( dev-lang/swig >=dev-lang/python-2.1.0 )"
 RDEPEND="dev-libs/libusb"
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
-	epatch "${FILESDIR}/${P}-swig-assert.patch"
+	epatch "${FILESDIR}"/${P}-swig-assert.patch
 }
 
 src_compile() {
