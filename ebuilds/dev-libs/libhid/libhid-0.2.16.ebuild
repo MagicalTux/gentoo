@@ -10,7 +10,7 @@ SRC_URI="http://beta.magicaltux.net/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="doc python"
+IUSE="debug doc python"
 
 DEPEND="dev-libs/libusb
 	doc? ( app-doc/doxygen )
@@ -20,11 +20,15 @@ RDEPEND="dev-libs/libusb"
 src_compile() {
 	local myconf
 
+	myconf=""
+
 	if use doc; then
-		myconf="$myconf --with-doxygen"
+		myconf="${myconf} --with-doxygen"
 	else
-		myconf="$myconf --without-doxygen"
+		myconf="${myconf} --without-doxygen"
 	fi
+
+	myconf="${myconf} $(use_enable debug)"
 
 	if use python; then
 		# libhid includes its own python detection m4 from
@@ -32,7 +36,9 @@ src_compile() {
 		# As it seems to detect python in the wrong place, we'll force it by
 		# passing the right environnement variables, only if we have the python
 		# flag
-		PYTHON_LDFLAGS="$(python-config --ldflags)" econf --enable-swig ${myconf} || die "econf failed"
+		PYTHON_LDFLAGS="$(python-config --ldflags)" \
+			econf \
+			--enable-swig ${myconf} || die "econf failed"
 	else
 		# avoid libhid running swig if it finds it automatically as long as the
 		# "python" use flag is not set
