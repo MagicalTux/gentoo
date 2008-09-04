@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+  <email>mark@hell.ne.jp</email>
+</maintainer>
+<longdescription>
+Chromium is an open-source browser project that aims to build a
+safer, faster, and more stable way for all Internet users to experience the web.
+This packages includes Google V8, the Chrome JavaScript engine.
+</longdescription>
+</pkgmetadata>
