@@ -3,13 +3,13 @@
   <overlay
       contact="magicaltux@ookoo.org"
       name="magicaltux"
-      src="https://ookoo.org/svn/gentoo/ebuilds"
+      src="http://ookoo.org/svn/gentoo/ebuilds"
       type="svn">
     <link>
-        http://ookoo.org/
+			http://www.magicaltux.net/
     </link>
     <description>
-        Stuff and stuff
+      Experimental packages by MagicalTux
     </description>
   </overlay>
 </layman>
