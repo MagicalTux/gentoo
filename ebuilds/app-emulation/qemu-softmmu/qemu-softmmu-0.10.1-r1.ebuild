@@ -42,7 +42,7 @@ src_unpack() {
 	unpack ${A}
 
 	cd "${S}"
-	epatch "${FILESDIR}/${P}-0.10.1-nopl-fix.patch"
+	epatch "${FILESDIR}/${P}-nopl-fix.patch"
 	# avoid fdt till an updated release appears
 	sed -i -e 's:fdt="yes":fdt="no":' configure
 	# prevent docs to get automatically installed
