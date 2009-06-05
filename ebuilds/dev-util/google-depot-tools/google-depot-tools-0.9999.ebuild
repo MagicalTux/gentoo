@@ -15,9 +15,8 @@ RDEPEND="dev-lang/python"
 DEPEND="${RDEPEND}"
 
 src_install() {
-	# install everything
-	dodir /opt/google/depot_tools/
 	# this will naturally avoid copying ".svn"
+	mkdir -p /opt/google/depot_tools/
 	cp -R depot_tools/* /opt/google/depot_tools/
 }
 
