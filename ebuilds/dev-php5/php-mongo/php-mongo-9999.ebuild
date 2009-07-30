@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="dev-db/mongo"
+RDEPEND="dev-db/mongodb"
 DEPEND="${RDEPEND}"
 
 EGIT_REPO_URI="git://github.com/mongodb/mongo-php-driver.git"
