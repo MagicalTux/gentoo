@@ -10,7 +10,7 @@ PHP_EXT_NAME="mongo"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
-inherit git php-ext-pecl-r1
+inherit php-ext-pecl-r1 git
 
 DESCRIPTION="Mongo (from \"humongous\") is a high-performance, open source, schema-free document-oriented  database."
 HOMEPAGE="http://www.mongodb.org/display/DOCS/PHP+Language+Center"
