@@ -27,6 +27,9 @@ DEPEND="${RDEPEND}"
 need_php_by_category
 
 src_unpack() {
-	php-ext-source-r1_phpize
+	# we override src_unpack as both git and php-ext-pecl-r1 are trying to take
+	# it over
+	git_src_unpack
+	php-ext-source-r1_src_unpack
 }
 
