@@ -8,7 +8,7 @@ DESCRIPTION="Mongo (from \"humongous\") is a high-performance, open source, sche
 HOMEPAGE="http://www.mongodb.org/"
 SRC_URI="http://github.com/mongodb/mongo/tarball/r${PV} -> ${P}.tar.gz"
 
-LICENSE=""
+LICENSE="GNU-AGPL-3.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
@@ -36,5 +36,6 @@ src_compile() {
 src_install() {
 	# dirty hack as it seems DESTDIR="${D}" doesn't work
 	scons --prefix="${D}/usr" install || die "scons install failed"
+	dodoc README
 }
 
