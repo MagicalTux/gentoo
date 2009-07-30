@@ -4,6 +4,12 @@
 
 EAPI="2"
 
+EGIT_REPO_URI="git://github.com/mongodb/mongo-php-driver.git"
+
+PHP_EXT_NAME="mongo"
+PHP_EXT_INI="yes"
+PHP_EXT_ZENDEXT="no"
+
 inherit git php-ext-pecl-r1
 
 DESCRIPTION="Mongo (from \"humongous\") is a high-performance, open source, schema-free document-oriented  database."
@@ -17,12 +23,6 @@ IUSE=""
 
 RDEPEND="dev-db/mongodb"
 DEPEND="${RDEPEND}"
-
-EGIT_REPO_URI="git://github.com/mongodb/mongo-php-driver.git"
-
-PHP_EXT_NAME="mongo"
-PHP_EXT_INI="yes"
-PHP_EXT_ZENDEXT="no"
 
 need_php_by_category
 
