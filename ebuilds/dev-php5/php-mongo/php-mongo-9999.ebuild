@@ -2,9 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
+
 inherit git php-ext-pecl-r1
 
-DESCRIPTION="Mongo (from "humongous") is a high-performance, open source, schema-free document-oriented  database."
+DESCRIPTION="Mongo (from \"humongous\") is a high-performance, open source, schema-free document-oriented  database."
 HOMEPAGE="http://www.mongodb.org/display/DOCS/PHP+Language+Center"
 SRC_URI=""
 
