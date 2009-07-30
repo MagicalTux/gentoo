@@ -33,7 +33,7 @@ src_unpack() {
 	# can't call php-ext-source-r1_src_unpack directly as it tries to unpack
 	# "${A}" which is empty
 	cd "${S}"
-	epatch "${FILESDIR}/${PN}_no_osx_thingie.patch"
+	epatch "${FILESDIR}/${P}_no_osx_thingie.patch"
 	php-ext-source-r1_phpize
 }
 
