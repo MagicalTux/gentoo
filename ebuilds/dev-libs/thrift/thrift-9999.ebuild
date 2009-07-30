@@ -4,7 +4,7 @@
 
 JAVA_PKG_IUSE="doc source"
 
-inherit subversion java-pkg-opt-2
+inherit subversion java-pkg-opt-2 java-ant-2
 
 DESCRIPTION="Thrift is a software framework for scalable cross-language services development"
 HOMEPAGE="http://incubator.apache.org/thrift/"
@@ -18,6 +18,8 @@ KEYWORDS="~amd64"
 
 IUSE="java php cpp csharp python ruby perl erlang cocao smalltalk ocaml haskell
 xsd html"
+
+JAVA_PKG_BSFIX_NAME="lib/java/build.xml"
 
 COMMON_DEP="dev-libs/boost"
 
