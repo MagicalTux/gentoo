@@ -34,6 +34,6 @@ src_compile() {
 }
 
 src_install() {
-	scons --prefix=${D} install DESTDIR="${D}"
+	scons --prefix=/usr install DESTDIR="${D}"
 }
 
