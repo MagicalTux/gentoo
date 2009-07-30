@@ -4,7 +4,7 @@
 
 JAVA_PKG_IUSE="doc source"
 
-inherit subversion
+inherit subversion java-pkg-opt-2
 
 DESCRIPTION="Thrift is a software framework for scalable cross-language services development"
 HOMEPAGE="http://incubator.apache.org/thrift/"
@@ -21,9 +21,9 @@ xsd html"
 
 COMMON_DEP="dev-libs/boost"
 
-RDEPEND=">=virtual/jre-1.4
+RDEPEND="java? ( >=virtual/jre-1.4 )
 	${COMMON_DEP}"
-DEPEND=">=virtual/jdk-1.4
+DEPEND="java? ( >=virtual/jdk-1.4 )
 	${COMMON_DEP}"
 
 EANT_BUILD_TARGET=""
@@ -34,11 +34,21 @@ src_prepare() {
 }
 
 src_configure() {
+	local myconf=""
+	if use java; then
+		myconf="${myconf} --enable-gen-java --with-java --with-javac-args=\"$(java-pkg_javac-args)\""
+	else
+		myconf="${myconf} --disable-gen-java --without-java"
+	fi
 # TODO: handle useflags
-	econf
+	econf ${myconf}
 }
 
 src_install() {
-	make install
+	make install DESTDIR=${D} || die
+
+	if use java; then
+		java-pkg_newjar lib/java/libthrift.jar libthrift.jar
+	fi
 }
 
