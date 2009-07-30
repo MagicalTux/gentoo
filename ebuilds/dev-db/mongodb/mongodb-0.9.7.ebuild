@@ -28,10 +28,10 @@ DEPEND="
 S="${WORKDIR}/mongodb-mongo-6dc201583a91ae97f547fbff748019dfbc8ea1d4"
 
 src_compile() {
-	scons all
+	scons ${MAKEOPTS} all
 }
 
 src_install() {
-	scons --prefix=${D} install
+	scons --prefix=${D} install DESTDIR="${D}"
 }
 
