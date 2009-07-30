@@ -30,6 +30,9 @@ src_unpack() {
 	# we override src_unpack as both git and php-ext-pecl-r1 are trying to take
 	# it over
 	git_src_unpack
-	php-ext-source-r1_src_unpack
+	# can't call php-ext-source-r1_src_unpack directly as it tries to unpack
+	# "${A}" which is empty
+	cd "${S}"
+	php-ext-source-r1_phpize
 }
 
