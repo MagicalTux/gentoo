@@ -26,3 +26,7 @@ DEPEND="${RDEPEND}"
 
 need_php_by_category
 
+src_unpack() {
+	php-ext-source-r1_phpize
+}
+
