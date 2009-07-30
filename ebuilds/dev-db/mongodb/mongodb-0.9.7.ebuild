@@ -24,11 +24,8 @@ DEPEND="
 	${RDEPEND}
 "
 
-src_unpack() {
-	unpack ${A}
-	ls
-	for foo in mongodb-mongo-*; do S="${foo}"; done
-}
+# todo: find a way to automate this
+S=mongodb-mongo-6dc201583a91ae97f547fbff748019dfbc8ea1d4
 
 src_compile() {
 	scons all
