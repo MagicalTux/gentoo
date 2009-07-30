@@ -24,6 +24,12 @@ DEPEND="
 	${RDEPEND}
 "
 
+src_unpack() {
+	unpack ${A}
+	ls
+	for foo in mongodb-mongo-*; do S="${foo}"; done
+}
+
 src_compile() {
 	scons all
 }
