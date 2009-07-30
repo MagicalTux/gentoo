@@ -28,7 +28,9 @@ DEPEND="
 S="${WORKDIR}/mongodb-mongo-6dc201583a91ae97f547fbff748019dfbc8ea1d4"
 
 src_compile() {
-	scons ${MAKEOPTS} all
+	# we do not use MAKEOPTS here. tested here with -j7 and 2GB ram wasn't
+	# enough
+	scons all
 }
 
 src_install() {
