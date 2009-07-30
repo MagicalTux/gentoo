@@ -30,11 +30,11 @@ S="${WORKDIR}/mongodb-mongo-6dc201583a91ae97f547fbff748019dfbc8ea1d4"
 src_compile() {
 	# we do not use MAKEOPTS here. tested here with -j7 and 2GB ram wasn't
 	# enough
-	scons all
+	scons all || die "scons failed"
 }
 
 src_install() {
 	# dirty hack as it seems DESTDIR="${D}" doesn't work
-	scons --prefix="${D}/usr" install
+	scons --prefix="${D}/usr" install || die "scons install failed"
 }
 
