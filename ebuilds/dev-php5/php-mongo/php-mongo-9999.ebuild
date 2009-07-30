@@ -10,7 +10,7 @@ PHP_EXT_NAME="mongo"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
-inherit php-ext-pecl-r1 git
+inherit php-ext-pecl-r1 git eutils
 
 DESCRIPTION="Mongo (from \"humongous\") is a high-performance, open source, schema-free document-oriented  database."
 HOMEPAGE="http://www.mongodb.org/display/DOCS/PHP+Language+Center"
@@ -33,6 +33,7 @@ src_unpack() {
 	# can't call php-ext-source-r1_src_unpack directly as it tries to unpack
 	# "${A}" which is empty
 	cd "${S}"
+	epatch "${FILESDIR}/${PN}_no_osx_thingie.patch"
 	php-ext-source-r1_phpize
 }
 
