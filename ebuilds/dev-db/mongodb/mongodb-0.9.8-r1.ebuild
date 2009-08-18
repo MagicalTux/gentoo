@@ -7,7 +7,7 @@ HOMEPAGE="http://www.mongodb.org/"
 SRC_URI=""
 
 EGIT_REPO_URI="git://github.com/mongodb/mongo.git"
-EGIT_BRANCH="r${PV}"
+EGIT_BRANCH="origin/r${PV}"
 
 inherit git
 
