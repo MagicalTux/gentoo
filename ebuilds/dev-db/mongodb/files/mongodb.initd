@@ -32,8 +32,8 @@ start() {
 		args="$args $MONGODB_OPTIONS"
 	fi
 
-	start-stop-daemon --background --start --user ${MONGODB_USER} --pidfile \
-		--stdout /var/log/mongodb.log \
+	start-stop-daemon --background --start --user ${MONGODB_USER} \
+		--stdout /var/log/mongodb.log --pidfile \
 		"${MONGODB_PID_FILE}" --make-pidfile --exec ${MONGODB_EXEC} \
 		 -- ${args} run
 	eend $?
