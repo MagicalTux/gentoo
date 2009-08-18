@@ -18,7 +18,7 @@ RDEPEND="
 	dev-lang/spidermonkey
 "
 DEPEND="
-	dev-util/scons
+	>=dev-util/scons-1.2.0-r1
 	app-shells/tcsh
 	dev-libs/boost
 	${RDEPEND}
@@ -26,6 +26,16 @@ DEPEND="
 
 # todo: find a way to automate this
 S="${WORKDIR}/mongodb-mongo-75a58367af664525db5e7226db81082be19e4f06"
+
+pkg_setup() {
+	enewgroup mongodb
+	enewuser mongodb -1 -1 /var/lib/${PN} mongodb
+}
+
+src_prepare() {
+	epatch "${FILESDIR}"/modify-*.patch
+	epatch "${FILESDIR}/server-238-fix.patch"
+}
 
 src_compile() {
 	# we do not use MAKEOPTS here. tested here with -j7 and 2GB ram wasn't
@@ -36,6 +46,17 @@ src_compile() {
 src_install() {
 	# dirty hack as it seems DESTDIR="${D}" doesn't work
 	scons --prefix="${D}/usr" install || die "scons install failed"
+
+	for x in /var/{lib,log,run}/${PN}; do
+		dodir "${x}" || die "Install failed"
+		fowners mongodb:mongodb "${x}"
+	done
+
+	doman debian/mongo*.1 || die "Install failed"
+
+	newinitd "${FILESDIR}/${PN}.initd" ${PN} || die "Install failed"
+	newconfd "${FILESDIR}/${PN}.confd" ${PN} || die "Install failed"
+
 	dodoc README
 }
 
