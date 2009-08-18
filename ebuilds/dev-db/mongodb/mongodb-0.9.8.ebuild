@@ -25,7 +25,7 @@ DEPEND="
 "
 
 # todo: find a way to automate this
-S="${WORKDIR}/mongodb-mongo-6dc201583a91ae97f547fbff748019dfbc8ea1d4"
+S="${WORKDIR}/mongodb-mongo-75a58367af664525db5e7226db81082be19e4f06"
 
 src_compile() {
 	# we do not use MAKEOPTS here. tested here with -j7 and 2GB ram wasn't
