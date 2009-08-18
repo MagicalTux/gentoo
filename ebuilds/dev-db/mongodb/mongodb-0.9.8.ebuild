@@ -4,6 +4,8 @@
 
 EAPI="2"
 
+inherit eutils
+
 DESCRIPTION="Mongo (from \"humongous\") is a high-performance, open source, schema-free document-oriented  database."
 HOMEPAGE="http://www.mongodb.org/"
 SRC_URI="http://github.com/mongodb/mongo/tarball/r${PV} -> ${P}.tar.gz"
