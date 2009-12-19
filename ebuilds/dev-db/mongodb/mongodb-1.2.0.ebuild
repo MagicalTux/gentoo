@@ -34,11 +34,6 @@ pkg_setup() {
 	enewuser mongodb -1 -1 /var/lib/${PN} mongodb
 }
 
-src_prepare() {
-	epatch "${FILESDIR}"/modify-*.patch
-	epatch "${FILESDIR}/server-238-fix.patch"
-}
-
 src_compile() {
 	# we do not use MAKEOPTS here. tested here with -j7 and 2GB ram wasn't
 	# enough
