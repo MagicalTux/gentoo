@@ -8,12 +8,13 @@ inherit eutils
 
 DESCRIPTION="Mongo (from \"humongous\") is a high-performance, open source, schema-free document-oriented  database."
 HOMEPAGE="http://www.mongodb.org/"
-SRC_URI="http://downloads.mongodb.org/src/mongodb-src-r${PV}.tar.gz"
+SRC_URI="http://downloads.mongodb.org/src/${PN}-src-r${PV}.tar.gz"
 
 LICENSE="GNU-AGPL-3.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+S="${PN}-src-r${PV}"
 
 RDEPEND="
 	dev-libs/pcre++
