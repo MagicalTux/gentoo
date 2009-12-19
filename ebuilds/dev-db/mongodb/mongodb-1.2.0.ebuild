@@ -14,7 +14,7 @@ LICENSE="GNU-AGPL-3.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-S="${PN}-src-r${PV}"
+S="${WORKDIR}/${PN}-src-r${PV}"
 
 RDEPEND="
 	dev-libs/pcre++
@@ -26,9 +26,6 @@ DEPEND="
 	dev-libs/boost
 	${RDEPEND}
 "
-
-# todo: find a way to automate this
-S="${WORKDIR}/mongodb-mongo-75a58367af664525db5e7226db81082be19e4f06"
 
 pkg_setup() {
 	enewgroup mongodb
