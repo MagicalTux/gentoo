@@ -26,6 +26,13 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+pkg_setup() {
+	# Used by daemon
+	ebegin "Creating bitcoin user and group"
+	enewgroup bitcoin
+	enewuser bitcoin -1 -1 /var/lib/bitcoin bitcoin
+}
+
 src_prepare() {
 	epatch "${FILESDIR}/${P}-gentoo.patch"
 	if ! use sse2; then
@@ -39,13 +46,6 @@ src_compile() {
 		emake -f makefile.unix bitcoin
 	fi
 	emake -f makefile.unix bitcoind
-}
-
-pkg_preinst() {
-	# Used by daemon
-	ebegin "Creating bitcoin user and group"
-	enewgroup bitcoin
-	enewuser bitcoin -1 -1 /var/lib/bitcoin bitcoin
 }
 
 src_install() {
