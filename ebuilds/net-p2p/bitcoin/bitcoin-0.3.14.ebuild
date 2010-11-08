@@ -15,10 +15,10 @@ SRC_URI="mirror://sourceforge/bitcoin/${P}-linux.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="wx nls sse2"
+IUSE="wxwidgets nls sse2"
 
 RDEPEND="
-	wx? ( x11-libs/wxGTK:2.9[X] >=app-admin/eselect-wxwidgets-0.7-r1 )
+	wxwidgets? ( x11-libs/wxGTK:2.9[X] >=app-admin/eselect-wxwidgets-0.7-r1 )
 	dev-libs/crypto++
 	dev-libs/openssl
 	dev-libs/boost
@@ -35,7 +35,7 @@ src_prepare() {
 
 src_compile() {
 	cd "${S}/src"
-	if use wx; then
+	if use wxwidgets; then
 		emake -f makefile.unix bitcoin
 	fi
 	emake -f makefile.unix bitcoind
@@ -50,7 +50,7 @@ pkg_preinst() {
 
 src_install() {
 	cd "${S}/src"
-	if use wx; then
+	if use wxwidgets; then
 		dobin bitcoin
 		insinto /usr/share/pixmaps
 		cd "${S}/src/rc"
