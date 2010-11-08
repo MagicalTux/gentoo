@@ -1,0 +1,36 @@
+diff -rbBU3 bitcoin-0.3.14/src/makefile.unix bitcoin-0.3.14-modified/src/makefile.unix
+--- bitcoin-0.3.14/src/makefile.unix	2010-10-20 09:01:00.000000000 +0900
++++ bitcoin-0.3.14-modified/src/makefile.unix	2010-11-08 12:53:38.342582327 +0900
+@@ -3,21 +3,12 @@
+ # file license.txt or http://www.opensource.org/licenses/mit-license.php.
+ 
+ 
+-INCLUDEPATHS= \
+- -I"/usr/local/include/wx-2.9" \
+- -I"/usr/local/lib/wx/include/gtk2-unicode-debug-static-2.9"
++INCLUDEPATHS=$(shell wx-config-2.9 --cflags) -I"/usr/include/db4.7"
+ 
+-# for wxWidgets 2.9.1, add -l Xxf86vm
+-WXLIBS= \
+- -Wl,-Bstatic \
+-   -l wx_gtk2ud-2.9 \
+- -Wl,-Bdynamic \
+-   -l gtk-x11-2.0 \
+-   -l SM
++WXLIBS=$(shell wx-config-2.9 --libs)
+ 
+-# for boost 1.37, add -mt to the boost libraries
+ LIBS= \
+- -Wl,-Bstatic \
++   -dead_strip \
+    -l boost_system \
+    -l boost_filesystem \
+    -l boost_program_options \
+@@ -25,7 +16,6 @@
+    -l db_cxx \
+    -l ssl \
+    -l crypto \
+- -Wl,-Bdynamic \
+    -l gthread-2.0 \
+    -l z \
+    -l dl
