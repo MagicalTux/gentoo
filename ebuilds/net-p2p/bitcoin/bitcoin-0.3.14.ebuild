@@ -35,14 +35,14 @@ src_prepare() {
 
 src_compile() {
 	cd "${S}/src"
-	if use gui; then
+	if use wx; then
 		emake -f makefile.unix bitcoin
 	fi
 	emake -f makefile.unix bitcoind
 }
 
 pkg_preinst() {
-	# Used by daemon, not needed by gui.
+	# Used by daemon
 	ebegin "Creating bitcoin user and group"
 	enewgroup bitcoin
 	enewuser bitcoin -1 -1 /var/lib/bitcoin bitcoin
@@ -50,7 +50,7 @@ pkg_preinst() {
 
 src_install() {
 	cd "${S}/src"
-	if use gui; then
+	if use wx; then
 		dobin bitcoin
 		insinto /usr/share/pixmaps
 		cd "${S}/src/rc"
