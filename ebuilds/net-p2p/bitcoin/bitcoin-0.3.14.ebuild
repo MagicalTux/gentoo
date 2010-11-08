@@ -4,6 +4,10 @@
 
 EAPI=3
 
+WX_GTK_VER="2.9"
+
+inherit distutils eutils wxwidgets
+
 DESCRIPTION="A peer-to-peer network based digital currency."
 HOMEPAGE="http://bitcoin.org/"
 SRC_URI="mirror://sourceforge/bitcoin/${P}-linux.tar.gz"
@@ -22,13 +26,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-pkg_setup() {
-	# Used by daemon, not needed by gui.
-	ebegin "Creating bitcoin user and group"
-	enewgroup bitcoin
-	enewuser bitcoin -1 -1 /var/lib/bitcoin bitcoin
-}
-
 src_prepare() {
 	epatch "${FILESDIR}/${P}-gentoo.patch"
 	if ! use sse2; then
@@ -42,6 +39,13 @@ src_compile() {
 		emake -f makefile.unix bitcoin
 	fi
 	emake -f makefile.unix bitcoind
+}
+
+pkg_preinst() {
+	# Used by daemon, not needed by gui.
+	ebegin "Creating bitcoin user and group"
+	enewgroup bitcoin
+	enewuser bitcoin -1 -1 /var/lib/bitcoin bitcoin
 }
 
 src_install() {
