@@ -41,6 +41,8 @@ src_prepare() {
 }
 
 src_compile() {
+	# Override MAKEOPTS to avoid killing compiling host
+	MAKEOPTS="-j1"
 	cd "${S}/src"
 	if use wxwidgets; then
 		emake -f makefile.unix bitcoin
