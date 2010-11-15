@@ -36,7 +36,10 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}/${P}-gentoo.patch"
 	if use getwork; then
+		# stupid patch needs to be applied from src dir
+		cd "${S}/src"
 		epatch "${FILESDIR}/${P}-getwork.patch"
+		cd "${S}"
 	fi
 	if ! use sse2; then
 		sed -i 's/-DFOURWAYSSE2//' "${S}/src/makefile.unix"
