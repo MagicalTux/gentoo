@@ -75,7 +75,7 @@ src_install() {
 	# Contains wallet.dat and we don't want other users stealing it.
 	diropts -m700
 	dodir /var/lib/bitcoin
-	fowners bitcoin:bitcoin /var/lib/bitcoin 
+	fowners bitcoin:bitcoin /var/lib/bitcoin
 	# To stop bitcoind we need the symlink (su doesn't let bitcoind know about /etc/bitcoin/bitcoin.conf).
 	dodir /var/lib/bitcoin/.bitcoin
 	fowners bitcoin:bitcoin /var/lib/bitcoin/.bitcoin
@@ -101,4 +101,3 @@ src_install() {
 	edos2unix *.txt
 	dodoc *.txt
 }
-

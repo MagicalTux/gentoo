@@ -1,15 +1,43 @@
-diff -rbBU3 bitcoin-0.3.14/src/makefile.unix bitcoin-0.3.14-modified/src/makefile.unix
---- bitcoin-0.3.14/src/makefile.unix	2010-10-20 09:01:00.000000000 +0900
-+++ bitcoin-0.3.14-modified/src/makefile.unix	2010-11-08 19:47:18.084447277 +0900
-@@ -3,29 +3,19 @@
+diff -rbBU3 bitcoin-0.3.15/src/init.cpp bitcoin-0.3.15-modified/src/init.cpp
+--- bitcoin-0.3.15/src/init.cpp	2010-11-13 10:01:00.000000000 +0900
++++ bitcoin-0.3.15-modified/src/init.cpp	2010-11-15 14:07:02.213191001 +0900
+@@ -74,13 +74,16 @@
+ #ifndef GUI
+ int main(int argc, char* argv[])
+ {
+-    for (int i = 1; i < argc; i++)
++    fDaemon = false;
++    for (int i = 1; i < argc; i++) {
+         if (!IsSwitchChar(argv[i][0]))
+             fCommandLine = true;
+-    fDaemon = !fCommandLine;
++        if (strcmp(argv[i], "-daemon") == 0)
++            fDaemon = true;
++    }
+ 
+ #ifdef __WXGTK__
+-    if (!fCommandLine)
++    if (fDaemon)
+     {
+         // Daemonize
+         pid_t pid = fork();
+diff -rbBU3 bitcoin-0.3.15/src/makefile.unix bitcoin-0.3.15-modified/src/makefile.unix
+--- bitcoin-0.3.15/src/makefile.unix	2010-11-13 10:01:00.000000000 +0900
++++ bitcoin-0.3.15-modified/src/makefile.unix	2010-11-15 14:04:29.503191427 +0900
+@@ -2,30 +2,21 @@
+ # Distributed under the MIT/X11 software license, see the accompanying
  # file license.txt or http://www.opensource.org/licenses/mit-license.php.
  
++# Avoid using wx-config when not needed
++ifeq ($(USE_WX),1)
++INCLUDEPATHS=$(shell wx-config-2.9 --cflags) -I"/usr/include/db4.7"
++WXLIBS=$(shell wx-config-2.9 --libs)
++endif
  
 -INCLUDEPATHS= \
 - -I"/usr/local/include/wx-2.9" \
 - -I"/usr/local/lib/wx/include/gtk2-unicode-debug-static-2.9"
-+INCLUDEPATHS=$(shell wx-config-2.9 --cflags) -I"/usr/include/db4.7"
- 
+-
 -# for wxWidgets 2.9.1, add -l Xxf86vm
 -WXLIBS= \
 - -Wl,-Bstatic \
@@ -17,8 +45,7 @@ diff -rbBU3 bitcoin-0.3.14/src/makefile.unix bitcoin-0.3.14-modified/src/makefil
 - -Wl,-Bdynamic \
 -   -l gtk-x11-2.0 \
 -   -l SM
-+WXLIBS=$(shell wx-config-2.9 --libs)
- 
+-
 -# for boost 1.37, add -mt to the boost libraries
  LIBS= \
 - -Wl,-Bstatic \
