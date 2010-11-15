@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/bitcoin/${P}-linux.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="wxwidgets nls sse2 getwork"
+IUSE="wxwidgets nls sse2 getwork getblock"
 
 RDEPEND="
 	wxwidgets? ( x11-libs/wxGTK:2.9[X] >=app-admin/eselect-wxwidgets-0.7-r1 )
@@ -42,6 +42,12 @@ src_prepare() {
 		# source too
 		edos2unix main.cpp main.h rpc.cpp
 		epatch "${FILESDIR}/${P}-getwork.patch"
+		cd "${S}"
+	fi
+	if use getblock; then
+		# stupid patch needs to be applied from src dir
+		cd "${S}/src"
+		epatch "${FILESDIR}/${P}-getblock.patch"
 		cd "${S}"
 	fi
 	if ! use sse2; then
