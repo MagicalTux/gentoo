@@ -9,5 +9,8 @@
 <longdescription lang="en">
 A peer-to-peer network based digital currency.
 </longdescription>
+<use>
+	<flag name="getwork">Enable getwork patch</flag>
+</use>
 </pkgmetadata>
 
