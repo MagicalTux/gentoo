@@ -23,14 +23,15 @@ diff -rbBU3 bitcoin-0.3.15/src/init.cpp bitcoin-0.3.15-modified/src/init.cpp
          pid_t pid = fork();
 diff -rbBU3 bitcoin-0.3.15/src/makefile.unix bitcoin-0.3.15-modified/src/makefile.unix
 --- bitcoin-0.3.15/src/makefile.unix	2010-11-13 10:01:00.000000000 +0900
-+++ bitcoin-0.3.15-modified/src/makefile.unix	2010-11-15 14:04:29.503191427 +0900
-@@ -2,30 +2,21 @@
++++ bitcoin-0.3.15-modified/src/makefile.unix	2010-11-15 14:12:49.495723583 +0900
+@@ -2,30 +2,22 @@
  # Distributed under the MIT/X11 software license, see the accompanying
  # file license.txt or http://www.opensource.org/licenses/mit-license.php.
  
 +# Avoid using wx-config when not needed
++INCLUDEPATHS=-I"/usr/include/db4.7"
 +ifeq ($(USE_WX),1)
-+INCLUDEPATHS=$(shell wx-config-2.9 --cflags) -I"/usr/include/db4.7"
++INCLUDEPATHS+=$(shell wx-config-2.9 --cflags)
 +WXLIBS=$(shell wx-config-2.9 --libs)
 +endif
  
