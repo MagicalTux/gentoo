@@ -47,6 +47,7 @@ src_prepare() {
 	if use getblock; then
 		# stupid patch needs to be applied from src dir
 		cd "${S}/src"
+		edos2unix rpc.cpp
 		epatch "${FILESDIR}/${P}-getblock.patch"
 		cd "${S}"
 	fi
