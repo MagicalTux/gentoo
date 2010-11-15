@@ -38,6 +38,9 @@ src_prepare() {
 	if use getwork; then
 		# stupid patch needs to be applied from src dir
 		cd "${S}/src"
+		# patch will drop CR from patch, causing it to not match. Drop CR from
+		# source too
+		edos2unix main.cpp main.h rpc.cpp
 		epatch "${FILESDIR}/${P}-getwork.patch"
 		cd "${S}"
 	fi
