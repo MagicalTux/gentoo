@@ -45,7 +45,7 @@ src_compile() {
 	MAKEOPTS="-j1"
 	cd "${S}/src"
 	if use wxwidgets; then
-		emake -f makefile.unix bitcoin
+		emake -f makefile.unix bitcoin USE_WX=1
 	fi
 	emake -f makefile.unix bitcoind
 }
