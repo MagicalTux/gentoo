@@ -1,8 +1,8 @@
 diff --git a/rpc.cpp b/rpc.cpp
-index 0c71993..f8bace8 100644
+index 113de85..be3c182 100644
 --- a/rpc.cpp
 +++ b/rpc.cpp
-@@ -149,6 +149,116 @@ Value getblocknumber(const Array& params, bool fHelp)
+@@ -163,6 +163,116 @@ Value getblocknumber(const Array& params, bool fHelp)
  }
  
  
@@ -119,7 +119,7 @@ index 0c71993..f8bace8 100644
  Value getconnectioncount(const Array& params, bool fHelp)
  {
      if (fHelp || params.size() != 0)
-@@ -699,6 +809,7 @@ pair<string, rpcfn_type> pCallTable[] =
+@@ -1050,6 +1160,7 @@ pair<string, rpcfn_type> pCallTable[] =
  {
      make_pair("help",                  &help),
      make_pair("stop",                  &stop),
@@ -127,10 +127,11 @@ index 0c71993..f8bace8 100644
      make_pair("getblockcount",         &getblockcount),
      make_pair("getblocknumber",        &getblocknumber),
      make_pair("getconnectioncount",    &getconnectioncount),
-@@ -1346,6 +1457,7 @@ int CommandLineRPC(int argc, char *argv[])
-         if (strMethod == "listreceivedbyaddress"  && n > 1) ConvertTo<bool>(params[1]);
-         if (strMethod == "listreceivedbylabel"    && n > 0) ConvertTo<boost::int64_t>(params[0]);
-         if (strMethod == "listreceivedbylabel"    && n > 1) ConvertTo<bool>(params[1]);
+@@ -1719,6 +1830,8 @@ int CommandLineRPC(int argc, char *argv[])
+         if (strMethod == "move"                   && n > 3) ConvertTo<boost::int64_t>(params[3]);
+         if (strMethod == "sendfrom"               && n > 2) ConvertTo<double>(params[2]);
+         if (strMethod == "sendfrom"               && n > 3) ConvertTo<boost::int64_t>(params[3]);
++	if (strMethod == "getblock"               && n > 0) ConvertTo<boost::int64_t>(params[0]);
 +	if (strMethod == "getblockbycount"        && n > 0) ConvertTo<boost::int64_t>(params[0]);
  
          // Execute
