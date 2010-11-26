@@ -43,6 +43,7 @@ start() {
 
 stop() {
 	ebegin "Stopping Bitcoin daemon"
+	su - "${BITCOIN_USER}" -s /bin/sh -c '/usr/bin/bitcoind stop'
 	start-stop-daemon --stop --user "${BITCOIN_USER}" --name bitcoind --pidfile /var/run/bitcoind.pid
 	eend $?
 }
