@@ -37,13 +37,13 @@ start() {
 		BITCOIN_OPTS="-server"
 	fi
 	start-stop-daemon --start --user "${BITCOIN_USER}" --name bitcoind --pidfile /var/run/bitcoind.pid --background --make-pidfile \
-	--env HOME="/var/lib/bitcoin" --exec /usr/bin/bitcoind --chuid "${BITCOIN_USER}" -- "${BITCOIN_OPTS}"
+	--env HOME="/var/lib/bitcoin" --wait 2000 --exec /usr/bin/bitcoind --chuid "${BITCOIN_USER}" -- "${BITCOIN_OPTS}"
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping Bitcoin daemon"
-	su - "${BITCOIN_USER}" -s /bin/sh -c '/usr/bin/bitcoind stop'
-	start-stop-daemon --stop --user "${BITCOIN_USER}" --name bitcoind --pidfile /var/run/bitcoind.pid
+	su - "${BITCOIN_USER}" -s /bin/sh -c '/usr/bin/bitcoind stop' >/dev/null 2>&1
+	start-stop-daemon --progress --stop --retry SIGTERM/15 --user "${BITCOIN_USER}" --name bitcoind --pidfile /var/run/bitcoind.pid
 	eend $?
 }
