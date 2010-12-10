@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/bitcoin/${P}-linux.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~x86 ~amd64"
 IUSE="wxwidgets nls sse2 getblock"
 
 RDEPEND="
