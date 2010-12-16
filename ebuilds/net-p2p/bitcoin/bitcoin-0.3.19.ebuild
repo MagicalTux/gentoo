@@ -14,8 +14,8 @@ SRC_URI="mirror://sourceforge/bitcoin/${P}-linux.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="wxwidgets nls sse2 getwork getblock"
+KEYWORDS="~x86 ~amd64"
+IUSE="wxwidgets nls sse2 getblock"
 
 RDEPEND="
 	wxwidgets? ( x11-libs/wxGTK:2.9[X] >=app-admin/eselect-wxwidgets-0.7-r1 )
@@ -35,19 +35,9 @@ pkg_setup() {
 
 src_prepare() {
 	epatch "${FILESDIR}/${P}-gentoo.patch"
-	if use getwork; then
-		# stupid patch needs to be applied from src dir
-		cd "${S}/src"
-		# patch will drop CR from patch, causing it to not match. Drop CR from
-		# source too
-		edos2unix main.cpp main.h rpc.cpp
-		epatch "${FILESDIR}/${P}-getwork.patch"
-		cd "${S}"
-	fi
 	if use getblock; then
 		# stupid patch needs to be applied from src dir
 		cd "${S}/src"
-		edos2unix rpc.cpp
 		epatch "${FILESDIR}/${P}-getblock.patch"
 		cd "${S}"
 	fi
