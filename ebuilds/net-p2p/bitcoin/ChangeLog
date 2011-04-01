@@ -2,6 +2,9 @@
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  1 Apr 2011; Mark Karpeles (MagicalTux) <mark@hell.ne.jp> ChangeLog:
+	ebuild bump to 0.3.20.2
+
   17 Dec 2010; Mark Karpeles (MagicalTux) <mark@hell.ne.jp> ChangeLog:
 	ebuild bump to 0.3.19
 
