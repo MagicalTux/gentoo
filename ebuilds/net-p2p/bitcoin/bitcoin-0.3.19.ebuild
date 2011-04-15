@@ -6,7 +6,7 @@ EAPI=3
 
 WX_GTK_VER="2.9"
 
-inherit distutils eutils wxwidgets
+inherit eutils wxwidgets
 
 DESCRIPTION="A peer-to-peer network based digital currency."
 HOMEPAGE="http://bitcoin.org/"
