@@ -1,6 +1,6 @@
-diff -rbBU3 bitcoin-0.3.21-original/src/makefile.unix bitcoin-0.3.21/src/makefile.unix
---- bitcoin-0.3.21-original/src/makefile.unix	2011-05-18 16:26:42.000000000 +0900
-+++ bitcoin-0.3.21/src/makefile.unix	2011-05-18 16:27:28.000000000 +0900
+diff -bBrU3 bitcoin-0.3.24-original/src/src/makefile.unix bitcoin-0.3.24/src/src/makefile.unix
+--- bitcoin-0.3.24-original/src/src/makefile.unix	2011-07-18 17:41:07.052026820 +0900
++++ bitcoin-0.3.24/src/src/makefile.unix	2011-07-18 17:43:31.572650462 +0900
 @@ -4,22 +4,23 @@
  
  CXX=g++
@@ -37,8 +37,8 @@ diff -rbBU3 bitcoin-0.3.21-original/src/makefile.unix bitcoin-0.3.21/src/makefil
 - -Wl,-Bdynamic \
     -l gthread-2.0 \
     -l z \
-    -l dl
-@@ -57,7 +57,7 @@
+    -l dl \
+@@ -60,7 +60,7 @@
  
  
  obj/%.o: %.cpp $(HEADERS)
@@ -54,5 +54,6 @@ diff -rbBU3 bitcoin-0.3.21-original/src/makefile.unix bitcoin-0.3.21/src/makefil
 -	$(CXX) -c $(CXXFLAGS) -o $@ $<
 +	$(CXX) -c $(CXXFLAGS) $(INCLUDEPATHS) -o $@ $<
  
- bitcoind: $(OBJS:obj/%=obj/nogui/%) obj/sha256.o
+ bitcoind: $(OBJS:obj/%=obj/nogui/%)
  	$(CXX) $(CXXFLAGS) -o $@ $^ $(LIBS)
+Seulement dans bitcoin-0.3.24/src/src: makefile.unix.orig
