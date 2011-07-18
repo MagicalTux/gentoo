@@ -6,7 +6,7 @@ EAPI=3
 
 WX_GTK_VER="2.9"
 
-inherit distutils eutils wxwidgets
+inherit eutils wxwidgets
 
 DESCRIPTION="A peer-to-peer network based digital currency."
 HOMEPAGE="http://bitcoin.org/"
@@ -48,9 +48,9 @@ src_compile() {
 	MAKEOPTS="-j1"
 	cd "${S}/src/src"
 	if use wxwidgets; then
-		emake -f makefile.unix bitcoin USE_WX=1
+		emake -f makefile.unix bitcoin USE_WX=1 || die "Failed to compile"
 	fi
-	emake -f makefile.unix bitcoind
+	emake -f makefile.unix bitcoind || die "Failed to compile"
 }
 
 src_install() {
@@ -97,7 +97,7 @@ src_install() {
 		done
 	fi
 
-	cd "${S}"
+	cd "${S}/src/doc"
 	# Documentation: change to unix line end and install.
 	edos2unix *.txt
 	dodoc *.txt
