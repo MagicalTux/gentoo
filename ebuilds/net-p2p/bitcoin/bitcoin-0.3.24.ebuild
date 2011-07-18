@@ -36,10 +36,7 @@ pkg_setup() {
 src_prepare() {
 	epatch "${FILESDIR}/${P}-gentoo.patch"
 	if use getblock; then
-		# stupid patch needs to be applied from src dir
-		cd "${S}/src"
 		epatch "${FILESDIR}/${P}-getblock.patch"
-		cd "${S}"
 	fi
 	if ! use sse2; then
 		sed -i 's/-DFOURWAYSSE2//' "${S}/src/makefile.unix"
@@ -49,7 +46,7 @@ src_prepare() {
 src_compile() {
 	# Override MAKEOPTS to avoid killing compiling host
 	MAKEOPTS="-j1"
-	cd "${S}/src"
+	cd "${S}/src/src"
 	if use wxwidgets; then
 		emake -f makefile.unix bitcoin USE_WX=1
 	fi
@@ -57,14 +54,12 @@ src_compile() {
 }
 
 src_install() {
-	cd "${S}/src"
+	cd "${S}/src/src"
 	if use wxwidgets; then
 		dobin bitcoin
 		insinto /usr/share/pixmaps
-		cd "${S}/src/rc"
-		doins bitcoin.ico
+		doins "${S}/src/share/pixmaps/bitcoin.ico"
 		make_desktop_entry ${PN} "Bitcoin" "/usr/share/pixmaps/bitcoin.ico" "Network;P2P"
-		cd "${S}/src"
 	fi
 
 	dobin bitcoind
