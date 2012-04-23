@@ -32,6 +32,6 @@ src_compile() {
 }
 
 src_install() {
-	tar -xv -C "${D}/opt/percona-cluster" "scripts/mysql/mysql-${PV}-XXXX,xxxx.tgz"
+	tar -xv -C "${D}/opt/percona-cluster" -f "${S}/scripts/mysql/mysql-${PV}-XXXX,xxxx.tgz"
 }
 
