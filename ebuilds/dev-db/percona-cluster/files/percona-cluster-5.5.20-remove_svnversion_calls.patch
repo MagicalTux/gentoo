@@ -1,0 +1,22 @@
+diff -rbBU3 percona-xtradb-cluster-galera-orig/scripts/build.sh percona-xtradb-cluster-galera/scripts/build.sh
+--- percona-xtradb-cluster-galera-orig/scripts/build.sh	2012-03-30 01:29:41.000000000 +0900
++++ percona-xtradb-cluster-galera/scripts/build.sh	2012-04-23 22:57:08.000000000 +0900
+@@ -289,7 +289,6 @@
+ #if [ "$GALERA_REV" == "exported" ]
+ #then
+     GALERA_REV=$(bzr revno 2>/dev/null)     || \
+-    GALERA_REV=$(svnversion | sed s/\:/,/g) || \
+     GALERA_REV=$(echo "xxxx")
+     export GALERA_REV
+ #fi
+diff -rbBU3 percona-xtradb-cluster-galera-orig/scripts/mysql/build.sh percona-xtradb-cluster-galera/scripts/mysql/build.sh
+--- percona-xtradb-cluster-galera-orig/scripts/mysql/build.sh	2012-03-30 01:29:41.000000000 +0900
++++ percona-xtradb-cluster-galera/scripts/mysql/build.sh	2012-04-23 22:56:38.000000000 +0900
+@@ -261,7 +261,6 @@
+     cd $GALERA_SRC
+     scripts/build.sh # options are passed via environment variables
+     GALERA_REV=$(bzr revno 2>/dev/null)     || \
+-    GALERA_REV=$(svnversion | sed s/\:/,/g) || \
+     GALERA_REV=$(echo "xxxx")
+ fi
+ 
