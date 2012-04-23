@@ -4,6 +4,8 @@
 
 EAPI=4
 
+inherit eutils
+
 DESCRIPTION="Percona XtraDB cluster"
 HOMEPAGE="http://www.percona.com/software/percona-xtradb-cluster/"
 SRC_URI="http://www.percona.com/downloads/Percona-XtraDB-Cluster/${PV}-23.4/source/percona-xtradb-cluster-galera.tar.gz
