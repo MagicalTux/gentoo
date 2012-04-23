@@ -33,6 +33,6 @@ src_compile() {
 
 src_install() {
 	mkdir -p "${D}/opt/percona-cluster"
-	tar -xv -C "${D}/opt/percona-cluster" -f "${S}/scripts/mysql/mysql-${PV}-XXXX,xxxx.tgz"
+	tar -xv -C "${D}/opt/percona-cluster" --strip-components 1 -f "${S}/scripts/mysql/mysql-${PV}-XXXX,xxxx.tgz"
 }
 
