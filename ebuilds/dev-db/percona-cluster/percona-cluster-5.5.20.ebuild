@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND="dev-util/scons"
-RDEPEND="${DEPEND} net-analyzer/netcat"
+RDEPEND="${DEPEND} net-analyzer/netcat dev-libs/boost"
 
 S="${WORKDIR}/percona-xtradb-cluster-galera"
 
