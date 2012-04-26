@@ -43,8 +43,10 @@ src_configure() {
 }
 src_compile() {
 	# patch spotify to not depend on lib versions
-	for foo in libcrypto.so libssl.so; do
+	for foo in libcrypto.so libssl.so libnss3.so libnssutil3.so; do
 		sed -i -e "s/$foo./$foo\x00/" "usr/bin/spotify"
+		sed -i -e "s/$foo./$foo\x00/" "usr/share/spotify/spotify"
+		sed -i -e "s/$foo./$foo\x00/" "usr/share/spotify/libcef.so"
 	done
 }
 src_install() {
