@@ -22,7 +22,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND} media-sound/pulseaudio"
 
 src_unpack() {
 	mkdir "${S}"
