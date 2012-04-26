@@ -43,11 +43,14 @@ src_configure() {
 }
 src_compile() {
 	# patch spotify to not depend on lib versions
-	for foo in libcrypto.so libssl.so libnss3.so libnssutil3.so; do
+	for foo in libcrypto.so libssl.so; do
 		sed -i -e "s/$foo./$foo\x00/" "usr/bin/spotify"
 		sed -i -e "s/$foo./$foo\x00/" "usr/share/spotify/spotify"
+	done
+	for foo in libcrypto.so libssl.so libnss3.so libnssutil3.so libsmime3.so libplc4.so libnspr4.so; do
 		sed -i -e "s/$foo./$foo\x00/" "usr/share/spotify/libcef.so"
 	done
+	sed -i -e "s/libpng12.so/libpng.so\x00\x00/" "usr/share/spotify/libcef.so"
 }
 src_install() {
 	cp -r "usr" "${D}/"
