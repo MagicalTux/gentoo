@@ -27,13 +27,13 @@ RDEPEND="${DEPEND}"
 src_unpack() {
 	mkdir "${S}"
 	cd "${S}"
-	ar x "../spotify-client-qt_${MY_PV}_all.deb"
+	ar x "${DISTDIR}/spotify-client-qt_${MY_PV}_all.deb"
 	unpack "data.tar.gz"
 	if use amd64; then
-		ar x "../spotify-client_${MY_PV}_amd64.deb"
+		ar x "${DISTDIR}/spotify-client_${MY_PV}_amd64.deb"
 	fi
 	if use x86; then
-		ar x "../spotify-client_${MY_PV}_i386.deb"
+		ar x "${DISTDIR}/spotify-client_${MY_PV}_i386.deb"
 	fi
 	unpack "data.tar.gz"
 	rm -f data.taz.gz control.tar.gz debian-binary
