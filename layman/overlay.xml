@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
 <layman>
   <overlay
-      contact="magicaltux@ookoo.org"
+      contact="mark@hell.ne.jp"
       name="magicaltux"
-      src="http://ookoo.org/svn/gentoo/ebuilds"
-      type="svn">
+      src="git://github.com/MagicalTux/gentoo.git"
+      type="git">
     <link>
 			http://www.magicaltux.net/
     </link>
