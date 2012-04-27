@@ -4,7 +4,7 @@
 
 * `emerge layman`
 * `vi /etc/layman/layman.cfg`
-* Add to file in overlays: `https://raw.github.com/MagicalTux/gentoo/master/layman/overlay.xml`
+* Add to file in overlays: `https://raw.github.com/MagicalTux/gentoo/layman/overlay.xml`
 * `layman -L`
 * `layman -a magicaltux`
 
