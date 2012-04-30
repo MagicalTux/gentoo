@@ -20,3 +20,12 @@ RDEPEND="${DEPEND}"
 
 DOCS="ChangeLog README.md"
 
+qt4-r2_src_install() {
+	# do normal install
+	qt4-r2_src_install
+	# install gentoo support files
+	mkdir -p "${D}/etc/init.d"
+	cp extra/gentoo/invpn "${D}/etc/init.d/invpn"
+	dodoc "${D}/etc/init.d/invpn.conf"
+}
+
