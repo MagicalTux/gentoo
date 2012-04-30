@@ -27,6 +27,6 @@ src_install() {
 	mkdir -p "${D}/etc/init.d"
 	mkdir -p "${D}/etc/invpn"
 	cp extra/gentoo/invpn "${D}/etc/init.d/invpn"
-	dodoc "${D}/etc/init.d/invpn.conf"
+	dodoc "extra/gentoo/invpn.conf"
 }
 
