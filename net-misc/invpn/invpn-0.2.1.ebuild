@@ -20,7 +20,7 @@ RDEPEND="${DEPEND}"
 
 DOCS="ChangeLog README.md"
 
-qt4-r2_src_install() {
+src_install() {
 	# do normal install
 	qt4-r2_src_install
 	# install gentoo support files
