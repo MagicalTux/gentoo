@@ -25,6 +25,7 @@ qt4-r2_src_install() {
 	qt4-r2_src_install
 	# install gentoo support files
 	mkdir -p "${D}/etc/init.d"
+	mkdir -p "${D}/etc/invpn"
 	cp extra/gentoo/invpn "${D}/etc/init.d/invpn"
 	dodoc "${D}/etc/init.d/invpn.conf"
 }
