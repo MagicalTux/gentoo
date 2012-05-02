@@ -18,7 +18,7 @@ IUSE="debug"
 DEPEND="x11-libs/qt-core:4"
 RDEPEND="${DEPEND}"
 
-DOCS="ChangeLog README.md"
+DOCS="ChangeLog README.md INSTALL"
 
 src_install() {
 	# do normal install
