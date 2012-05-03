@@ -94,6 +94,7 @@ src_install() {
 		make_desktop_entry bitcoin-qt "Bitcoin" "/usr/share/pixmaps/bitcoin.ico" "Network;P2P"
 	fi
 
+	cd "${S}/src/src"
 	dobin bitcoind
 	insinto /etc/bitcoin
 	# RPC configuration (user and password).
