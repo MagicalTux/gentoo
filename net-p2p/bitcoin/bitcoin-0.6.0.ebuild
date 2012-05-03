@@ -28,6 +28,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+S="${WORKDIR}/${P}-linux"
+
 pkg_setup() {
 	# Used by daemon
 	ebegin "Creating bitcoin user and group"
