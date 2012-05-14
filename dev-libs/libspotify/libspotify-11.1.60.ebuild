@@ -40,7 +40,7 @@ src_install() {
 		die 1
 	fi
 
-	sed -i 's#PKG_PREFIX:$(prefix)#PKG_PREFIX:$(real_prefix)#' Makefile
+	sed -i 's#PKG_PREFIX:$(prefix)#PKG_PREFIX:$(real_prefix)#;s/ldconfig.*//' Makefile
 	emake prefix="${D}/${DESTTREE}" real_prefix="${DESTTREE}" install
 
 	dodoc ChangeLog LICENSE licenses.xhtml README
