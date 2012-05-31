@@ -14,7 +14,7 @@ DOCS="README.md"
 
 USE_PHP="php5-3 php5-4"
 
-inherit php-ext-pecl-r2
+inherit php-ext-source-r2
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/libgit2/php-git.git"
