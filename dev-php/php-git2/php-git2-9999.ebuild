@@ -18,6 +18,7 @@ inherit php-ext-source-r2
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/libgit2/php-git.git"
+	EGIT_BRANCH="develop"
 	inherit git-2
 else
 	inherit vcs-snapshot
