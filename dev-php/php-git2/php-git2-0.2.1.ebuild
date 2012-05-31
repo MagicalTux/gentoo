@@ -34,6 +34,6 @@ RDEPEND="${DEPEND}"
 
 src_unpack() {
 	vcs-snapshot_src_unpack
-	mv "${S}/src/*" "${S}"
+	mv "${S}/src"/* "${S}"
 }
 
