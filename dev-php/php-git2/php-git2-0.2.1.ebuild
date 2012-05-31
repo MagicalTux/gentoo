@@ -29,7 +29,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND=""
+DEPEND="<=dev-libs/libgit2-0.16.0"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
