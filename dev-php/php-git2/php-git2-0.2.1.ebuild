@@ -33,7 +33,11 @@ DEPEND="<=dev-libs/libgit2-0.16.0"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
-	vcs-snapshot_src_unpack
+	if [[ ${PV} == "9999" ]] ; then
+		git-2_src_unpack
+	else
+		vcs-snapshot_src_unpack
+	fi
 	mv "${S}/src"/* "${S}"
 }
 
