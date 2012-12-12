@@ -39,7 +39,6 @@ src_compile() {
 }
 
 src_install() {
-	cp "${S}/innobackupex" "${D}/usr/bin"
 	dodoc COPYING
 	doman doc/xtrabackup.1
 	dobin innobackupex
