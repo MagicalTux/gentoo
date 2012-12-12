@@ -23,8 +23,8 @@ RDEPEND="${DEPEND}"
 
 src_unpack() {
 	bzr_src_unpack
-	# copy mysql in root
-	cp "${DISTDIR}/mysql-5.1.59.tar.gz" "${S}/percona-server-5.1-xtrabackup"
+	# copy mysql in root ~ doesn't work right so disabled for now :/
+#	cp "${DISTDIR}/mysql-5.1.59.tar.gz" "${S}/percona-server-5.1-xtrabackup/"
 }
 
 src_configure() {
