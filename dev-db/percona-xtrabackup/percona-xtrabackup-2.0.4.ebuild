@@ -4,6 +4,8 @@
 
 EAPI=4
 
+inherit bzr
+
 DESCRIPTION="Open source hot backup tool for InnoDB and XtraDB databases"
 HOMEPAGE="https://launchpad.net/percona-xtrabackup"
 SRC_URI="http://s3.amazonaws.com/percona.com/downloads/community/mysql-5.1.59.tar.gz"
