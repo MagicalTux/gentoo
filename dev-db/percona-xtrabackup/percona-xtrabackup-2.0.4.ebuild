@@ -26,6 +26,7 @@ src_unpack() {
 }
 
 src_configure() {
+	return
 }
 
 src_compile() {
