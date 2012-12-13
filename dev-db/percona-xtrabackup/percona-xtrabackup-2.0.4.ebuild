@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=""
+DEPEND="=sys-devel/automake-1.10*"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
