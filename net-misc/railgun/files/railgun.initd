@@ -1,0 +1,24 @@
+#!/sbin/runscript
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+RAILGUN_USER=railgun
+RAILGUN_OPTS="-config='/etc/railgun/railgun.conf'"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting railgun daemon"
+	start-stop-daemon --start --user "${RAILGUN_USER}" --name rg-listener --pidfile /var/run/railgun.pid --background --make-pidfile \
+		--wait 2000 --exec /usr/bin/rg-listener --chuid "${RAILGUN_USER}" -- "${RAILGUN_OPTS}"
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping railgun daemon"
+	start-stop-daemon --stop --user "${RAILGUN_USER}" --name rg-listener --pidfile /var/run/railgun.pid
+	eend $?
+}
