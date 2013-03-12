@@ -80,7 +80,7 @@ diff -bBrU3 bitcoin-0.8.0-linux_orig/src/src/rpcblockchain.cpp bitcoin-0.8.0-lin
 +    obj.push_back(Pair("bits", (uint64_t)block.nBits));
 +    obj.push_back(Pair("nonce", (uint64_t)block.nNonce));
 +    obj.push_back(Pair("n_tx", (int)block.vtx.size()));
-+    obj.push_back(Pair("size", (int)::GetSerializeSize(block, SER_NETWORK)));
++    obj.push_back(Pair("size", (int)::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION)));
 +
 +    Array tx;
 +    for (int i = 0; i < block.vtx.size(); i++) {
@@ -90,7 +90,7 @@ diff -bBrU3 bitcoin-0.8.0-linux_orig/src/src/rpcblockchain.cpp bitcoin-0.8.0-lin
 +	txobj.push_back(Pair("version", block.vtx[i].nVersion));
 +	txobj.push_back(Pair("lock_time", (uint64_t)block.vtx[i].nLockTime));
 +	txobj.push_back(Pair("size",
-+		(int)::GetSerializeSize(block.vtx[i], SER_NETWORK)));
++		(int)::GetSerializeSize(block.vtx[i], SER_NETWORK, PROTOCOL_VERSION)));
 +
 +	Array tx_vin;
 +	for (int j = 0; j < block.vtx[i].vin.size(); j++) {
