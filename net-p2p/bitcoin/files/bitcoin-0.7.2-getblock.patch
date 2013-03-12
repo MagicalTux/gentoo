@@ -1,6 +1,6 @@
-diff -bBrU3 bitcoin-0.7.2-linux/src/src/bitcoinrpc.cpp bitcoin-0.7.2-linux_p/src/src/bitcoinrpc.cpp
+diff -bBrU3 bitcoin-0.7.2-linux/src/src/bitcoinrpc.cpp bitcoin-0.7.2-linux-p/src/src/bitcoinrpc.cpp
 --- bitcoin-0.7.2-linux/src/src/bitcoinrpc.cpp	2012-12-14 08:05:48.000000000 +0900
-+++ bitcoin-0.7.2-linux_p/src/src/bitcoinrpc.cpp	2013-03-12 09:40:51.496915866 +0900
++++ bitcoin-0.7.2-linux-p/src/src/bitcoinrpc.cpp	2013-03-12 09:51:23.962086834 +0900
 @@ -203,6 +203,7 @@
    //  ------------------------  -----------------------  ------  --------
      { "help",                   &help,                   true,   true },
@@ -17,9 +17,9 @@ diff -bBrU3 bitcoin-0.7.2-linux/src/src/bitcoinrpc.cpp bitcoin-0.7.2-linux_p/src
      if (strMethod == "walletpassphrase"       && n > 1) ConvertTo<boost::int64_t>(params[1]);
      if (strMethod == "getblocktemplate"       && n > 0) ConvertTo<Object>(params[0]);
      if (strMethod == "listsinceblock"         && n > 1) ConvertTo<boost::int64_t>(params[1]);
-diff -bBrU3 bitcoin-0.7.2-linux/src/src/bitcoinrpc.h bitcoin-0.7.2-linux_p/src/src/bitcoinrpc.h
+diff -bBrU3 bitcoin-0.7.2-linux/src/src/bitcoinrpc.h bitcoin-0.7.2-linux-p/src/src/bitcoinrpc.h
 --- bitcoin-0.7.2-linux/src/src/bitcoinrpc.h	2012-12-14 08:05:49.000000000 +0900
-+++ bitcoin-0.7.2-linux_p/src/src/bitcoinrpc.h	2013-03-12 09:41:17.316710412 +0900
++++ bitcoin-0.7.2-linux-p/src/src/bitcoinrpc.h	2013-03-12 09:51:23.962086834 +0900
 @@ -187,5 +187,6 @@
  extern json_spirit::Value getrawmempool(const json_spirit::Array& params, bool fHelp);
  extern json_spirit::Value getblockhash(const json_spirit::Array& params, bool fHelp);
@@ -27,9 +27,9 @@ diff -bBrU3 bitcoin-0.7.2-linux/src/src/bitcoinrpc.h bitcoin-0.7.2-linux_p/src/s
 +extern json_spirit::Value getblockbycount(const json_spirit::Array& params, bool fHelp);
  
  #endif
-diff -bBrU3 bitcoin-0.7.2-linux/src/src/rpcblockchain.cpp bitcoin-0.7.2-linux_p/src/src/rpcblockchain.cpp
+diff -bBrU3 bitcoin-0.7.2-linux/src/src/rpcblockchain.cpp bitcoin-0.7.2-linux-p/src/src/rpcblockchain.cpp
 --- bitcoin-0.7.2-linux/src/src/rpcblockchain.cpp	2012-12-14 08:05:49.000000000 +0900
-+++ bitcoin-0.7.2-linux_p/src/src/rpcblockchain.cpp	2013-03-12 09:40:51.496915866 +0900
++++ bitcoin-0.7.2-linux-p/src/src/rpcblockchain.cpp	2013-03-12 09:52:59.701367208 +0900
 @@ -162,4 +162,115 @@
  
  
@@ -80,7 +80,7 @@ diff -bBrU3 bitcoin-0.7.2-linux/src/src/rpcblockchain.cpp bitcoin-0.7.2-linux_p/
 +    obj.push_back(Pair("bits", (uint64_t)block.nBits));
 +    obj.push_back(Pair("nonce", (uint64_t)block.nNonce));
 +    obj.push_back(Pair("n_tx", (int)block.vtx.size()));
-+    obj.push_back(Pair("size", (int)::GetSerializeSize(block, SER_NETWORK)));
++    obj.push_back(Pair("size", (int)::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION)));
 +
 +    Array tx;
 +    for (int i = 0; i < block.vtx.size(); i++) {
@@ -90,7 +90,7 @@ diff -bBrU3 bitcoin-0.7.2-linux/src/src/rpcblockchain.cpp bitcoin-0.7.2-linux_p/
 +	txobj.push_back(Pair("version", block.vtx[i].nVersion));
 +	txobj.push_back(Pair("lock_time", (uint64_t)block.vtx[i].nLockTime));
 +	txobj.push_back(Pair("size",
-+		(int)::GetSerializeSize(block.vtx[i], SER_NETWORK)));
++		(int)::GetSerializeSize(block.vtx[i], SER_NETWORK, PROTOCOL_VERSION)));
 +
 +	Array tx_vin;
 +	for (int j = 0; j < block.vtx[i].vin.size(); j++) {
