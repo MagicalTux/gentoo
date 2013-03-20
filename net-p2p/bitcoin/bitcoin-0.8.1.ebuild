@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/bitcoin/${P}-linux.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="nls getblock qt qrencode dbus upnp debug ssl"
 
 RDEPEND="
