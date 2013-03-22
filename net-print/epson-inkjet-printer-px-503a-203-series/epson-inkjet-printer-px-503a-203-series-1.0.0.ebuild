@@ -36,3 +36,8 @@ src_configure() {
 src_compile() {
 	emake -j1 || die
 }
+
+src_install() {
+	emake install-exec || die
+}
+
