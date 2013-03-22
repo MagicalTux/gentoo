@@ -31,7 +31,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --prefix="/opt/${PN}" $(use_enable debug)
+	econf LDFLAGS="$LDFLAGS -Wl,--no-as-needed" --prefix="/opt/${PN}" $(use_enable debug)
 }
 
 src_compile() {
