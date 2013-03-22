@@ -13,7 +13,7 @@ SRC_URI="http://a1227.g.akamai.net/f/1227/40484/1d/download.ebz.epson.net/dsc/f/
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="debug"
 
 DEPEND="net-print/cups"
 RDEPEND="${DEPEND}"
@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --prefix="/opt/${PN}"
+	econf --prefix="/opt/${PN}" $(use_enable debug)
 }
 
 src_compile() {
