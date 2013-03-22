@@ -18,12 +18,13 @@ IUSE=""
 DEPEND="net-print/cups"
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}/epson-inkjet-printer-filter-${PV}"
+
 src_unpack() {
 	rpm_src_unpack
 }
 
 src_prepare() {
-	sed -i -e 's:/opt/lsb/:/usr/:g' configure.ac || die
 	eautoreconf
 }
 
