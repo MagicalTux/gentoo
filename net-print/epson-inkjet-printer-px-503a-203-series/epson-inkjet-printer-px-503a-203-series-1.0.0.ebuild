@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --prefix=/usr
+	econf --prefix="/opt/${PN}"
 }
 
 src_compile() {
@@ -38,6 +38,14 @@ src_compile() {
 }
 
 src_install() {
-	emake install-exec || die
+	mkdir -p "${D}/opt/${PN}"
+	dodoc AUTHORS COPYING COPYING.EPSON COPYING.LIB NEWS README
+	mkdir -p "${D}/usr/share/cups/model/px-503a"
+	cp "${WORKDIR}/${P}/ppds/"* "${D}/usr/share/cups/model/px-503a"
+	cp -r "${WORKDIR}/${P}/watermark" "${D}/opt/${PN}"
+	cp -r "${WORKDIR}/${P}/resource" "${D}/opt/${PN}"
+	cp -r "${WORKDIR}/${P}/lib" "${D}/opt/${PN}"
+	cp -r "${WORKDIR}/${P}/lib64" "${D}/opt/${PN}"
+	install -D -m 755 "src/epson_inkjet_printer_filter" "${D}/opt/${PN}/cups/lib/filter/epson_inkjet_printer_filter"
 }
 
