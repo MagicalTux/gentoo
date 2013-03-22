@@ -26,6 +26,10 @@ src_unpack() {
 
 src_prepare() {
 	eautoreconf
+	chmod +x configure
+}
+
+src_configure() {
 	econf --prefix=/usr
 }
 
