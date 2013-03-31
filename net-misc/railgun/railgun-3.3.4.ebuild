@@ -26,7 +26,8 @@ src_unpack() {
 	mkdir "${S}"
 	cd "${S}"
 	ar x "${DISTDIR}/${A}" data.tar.gz
-	unpack "${S}/data.tar.gz"
+	tar xvf data.tar.gz
+#	unpack "/data.tar.gz"
 }
 
 src_compile() {
