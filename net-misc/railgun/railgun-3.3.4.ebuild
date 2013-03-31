@@ -25,7 +25,7 @@ pkg_setup() {
 src_unpack() {
 	mkdir "${S}"
 	cd "${S}"
-	ar x "${A}" data.tar.gz
+	ar x "${DISTDIR}/${A}" data.tar.gz
 	unpack data.tar.gz
 }
 
