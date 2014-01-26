@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="4"
+EAPI="5"
 
 DB_VER="4.7"
 
@@ -23,7 +23,7 @@ RDEPEND="
 	dbus? ( dev-qt/qtdbus:4 )
 	upnp? ( net-libs/miniupnpc )
 	dev-libs/openssl[-bindist]
-	dev-libs/boost
+	dev-libs/boost:=
 	sys-libs/db:$(db_ver_to_slot "${DB_VER}")
 "
 DEPEND="${RDEPEND}"
@@ -71,7 +71,8 @@ src_compile() {
 	BOOST_VER="$(replace_all_version_separators _ "${BOOST_VER}")"
 	BOOST_INC="/usr/include/boost-${BOOST_VER}"
 	OPTS+=("BOOST_INCLUDE_PATH=${BOOST_INC}")
-	OPTS+=("BOOST_LIB_SUFFIX=-${BOOST_VER}")
+# gentoo not using anymore boost lib suffix
+#	OPTS+=("BOOST_LIB_SUFFIX=-${BOOST_VER}")
 
 	use ssl  && OPTS+=(USE_SSL=1)
 
