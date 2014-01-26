@@ -19,8 +19,8 @@ IUSE="nls getblock qt qrencode dbus upnp debug ssl"
 
 RDEPEND="
 	qrencode? ( media-gfx/qrencode )
-	qt? ( x11-libs/qtcore:4 x11-libs/qtgui:4 )
-	dbus? ( x11-libs/qtdbus:4 )
+	qt? ( dev-qt/qtcore:4 dev-qt/qtgui:4 )
+	dbus? ( dev-qt/qtdbus:4 )
 	upnp? ( net-libs/miniupnpc )
 	dev-libs/openssl
 	dev-libs/boost
