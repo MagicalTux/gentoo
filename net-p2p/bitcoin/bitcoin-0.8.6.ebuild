@@ -38,6 +38,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}/${P}-boost.patch"
 	if use getblock; then
 		epatch "${FILESDIR}/${P}-getblock.patch"
 	fi
