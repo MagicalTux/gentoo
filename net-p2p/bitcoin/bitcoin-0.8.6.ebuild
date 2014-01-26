@@ -22,7 +22,7 @@ RDEPEND="
 	qt? ( dev-qt/qtcore:4 dev-qt/qtgui:4 )
 	dbus? ( dev-qt/qtdbus:4 )
 	upnp? ( net-libs/miniupnpc )
-	dev-libs/openssl
+	dev-libs/openssl[-bindist]
 	dev-libs/boost
 	sys-libs/db:$(db_ver_to_slot "${DB_VER}")
 "
