@@ -18,7 +18,8 @@ DEPEND="${RDEPEND}"
 
 src_install() {
 	# this will naturally avoid copying ".svn"
-	mkdir -p /opt/google/depot_tools/
-	cp -R depot_tools/* /opt/google/depot_tools/
+	dodoc LICENSE README README.gclient README.codereview README.git-cl README.testing
+	mkdir -p "${D}/opt/google/"
+	cp -R "${S}/" "${D}/opt/google/depot_tools/" || die "Install failed!"
 }
 
