@@ -17,9 +17,9 @@ RDEPEND="dev-lang/python"
 DEPEND="${RDEPEND}"
 
 src_install() {
-	# this will naturally avoid copying ".svn"
 	dodoc LICENSE README README.gclient README.codereview README.git-cl README.testing
-	mkdir -p "${D}/opt/google/"
-	cp -R "${S}/" "${D}/opt/google/depot_tools/" || die "Install failed!"
+	mkdir -p "${D}/opt/google/depot_tools/"
+	# this will naturally avoid copying ".git" and ".gitignore"
+	cp -R "${S}/"* "${D}/opt/google/depot_tools/" || die "Install failed!"
 }
 
