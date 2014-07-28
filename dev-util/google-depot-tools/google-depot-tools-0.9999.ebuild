@@ -22,6 +22,11 @@ src_install() {
 	# point to python2 rather than python
 	sed -i 's/ exec python / exec python2 /' download_from_google_storage fetch gcl clang-format roll-dep apply_issue drover gclient git-runhooks gn
 
+	# empty update_depot_tools as upgrades are to be handled by emerge
+	echo '#!/bin/sh' >update_depot_tools
+	echo 'exit' >>update_depot_tools
+	chmod +x update_depot_tools
+
 	dodoc LICENSE README README.gclient README.codereview README.git-cl README.testing
 	mkdir -p "${D}/opt/google/depot_tools/"
 	# this will naturally avoid copying ".git" and ".gitignore"
