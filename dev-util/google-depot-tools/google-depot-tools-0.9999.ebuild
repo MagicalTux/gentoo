@@ -2,9 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-DESCRIPTION="Google depot_tools for building google stuff"
-HOMEPAGE="http://dev.chromium.org/developers/how-tos/install-gclient"
-SRC_URI="http://src.chromium.org/svn/trunk/tools/depot_tools.tar.gz"
+inherit git-2
+
+DESCRIPTION="Chromium and other Google projects sometimes uses a package of scripts, the depot_tools, to manage interaction with the source code repository and the project's development process."
+HOMEPAGE="http://dev.chromium.org/developers/how-tos/install-depot-tools"
+EGIT_REPO_URI="https://chromium.googlesource.com/chromium/tools/depot_tools.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -19,5 +21,4 @@ src_install() {
 	mkdir -p /opt/google/depot_tools/
 	cp -R depot_tools/* /opt/google/depot_tools/
 }
-
 
